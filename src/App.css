@@ -1,39 +1,42 @@
-.App {
-  text-align: center;
+:root {
+    --font-size-title: 28px;
+    --font-size-subtitle: 18px;
+    --font-size-text: 15px; 
+
+    --font-weight-bold: 700;
+    --font-weight-normal: 500;
+
+    --color-bg: rgb(227, 227, 227);
+    --color-bg-variant:rgb(173, 173, 173);
+    --color-primary: rgb(255, 88, 59);
+    --color-white: #fff;
+
+    --padding-primary: 20px;
+
+    --button-radius: 48px;
+    --button-height: 60px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    color: black;
+    background-color: var(--color-bg);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    outline: none;
+    box-sizing: border-box;
 }
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-.App-link {
-  color: rgb(112, 76, 182);
-}
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+.button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    text-align: center;
+    padding: 10px;
+    height: var(--button-height);
+    border-radius: var(--button-radius);
+    font-size: var(--font-size-subtitle);
 }

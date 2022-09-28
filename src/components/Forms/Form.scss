@@ -1,0 +1,91 @@
+.form-container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 700px;
+    padding: 25px 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 400px auto;
+
+    &__error-msg {
+        position: absolute;
+        top: 116px;
+        left: var(--padding-primary);
+        color: red;
+        text-align: left;
+        width: 100%;
+    }
+
+    &__title {
+        > h2 {
+            font-size: var(--font-size-title);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 20px;
+        }
+        
+        > p {
+            font-size: var(--font-size-subtitle);
+            font-weight: var(--font-weight-normal);
+            margin-bottom: 40px;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+
+        &__item {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            
+            &__title {
+                font-size: var(--font-size-subtitle);
+                font-weight: var(--font-weight-bold);
+                margin-bottom: 5px;
+            }
+
+            &__input {
+                width: 100%;
+                position: relative;
+                background-color: var(--color-bg);
+                padding: 10px 15px;
+                border: 2px var(--color-primary) solid;
+                height: var(--button-height);
+                border-radius: var(--button-radius);
+                font-size: var(--font-size-subtitle);
+
+                > input {
+                    width: 100%;
+                    height: 100%;
+                    font-size: var(--font-size-subtitle);
+                    cursor: normal;
+                }
+
+                > button {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 10px;
+                    cursor: pointer;
+                    
+                    > svg {
+                        height: 20px;
+                        width: 20px;
+                        color: var(--color-bg-variant);
+                    }
+                }
+            }
+        }
+
+        &__submit {
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+    }
+}
