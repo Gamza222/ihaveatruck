@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ihaveatruck/static/css/main.630b0862.css",
+    "main.js": "/ihaveatruck/static/js/main.8b9706c2.js",
+    "index.html": "/ihaveatruck/index.html",
+    "main.630b0862.css.map": "/ihaveatruck/static/css/main.630b0862.css.map",
+    "main.8b9706c2.js.map": "/ihaveatruck/static/js/main.8b9706c2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.630b0862.css",
+    "static/js/main.8b9706c2.js"
+  ]
+}
