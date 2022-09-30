@@ -6,9 +6,10 @@
     --font-weight-bold: 700;
     --font-weight-normal: 500;
 
-    --color-bg: rgb(227, 227, 227);
-    --color-bg-variant:rgb(173, 173, 173);
+    --color-bg: rgb(242, 242, 242);
+    --color-bg-variant:rgb(219, 219, 219);
     --color-primary: rgb(255, 88, 59);
+    --color-red: rgb(255, 0, 0);
     --color-white: #fff;
 
     --padding-primary: 20px;

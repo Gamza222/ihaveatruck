@@ -4,6 +4,7 @@ import { ILogin } from '../assets/types';
 import './Form.scss';
 import { AiOutlineEye } from 'react-icons/ai'
 import { AiOutlineEyeInvisible } from 'react-icons/ai'
+import InputForm from '../UI/inputForm/inputForm';
 
 interface LoginPageProps {
 
@@ -24,7 +25,7 @@ const LogInPage: FC<LoginPageProps> = ({}) => {
 
     const [invalid, setInvalid] = useState<boolean>(false);
 
-    console.log(invalid)    
+    console.log(loginForm)    
 
     //configuration for login post request
     const config = {
@@ -62,27 +63,23 @@ const LogInPage: FC<LoginPageProps> = ({}) => {
             invalid ? <p className='form-container__error-msg'>email or password incorrect</p> : ''
         }
         <form onSubmit={handleSubmit} className='form-container__form'>
-            <div className='form-container__form__item'>
-                <p className='form-container__form__item__title'>Username</p>
-                <div className='form-container__form__item__input'>
-                    <input type="text" onChange={(e) => setLoginForm({...loginForm, email: e.target.value})} required/>
-                </div>
-            </div>
-            <div className='form-container__form__item'>    
-                <p className='form-container__form__item__title'>Password</p>
-                <div className='form-container__form__item__input'>
-                    <input 
-                        type={pwdVisible ? "text" : "password"}
-                        onChange={(e) => setLoginForm({...loginForm, password: e.target.value})} 
-                        required
-                    />
-                    <button type="button" onClick={() => setPwdVisible(!pwdVisible)}>
-                        {
-                            pwdVisible ?  <AiOutlineEyeInvisible/> : <AiOutlineEye />
-                        }
-                    </button>
-                </div>
-            </div>
+            <InputForm 
+                setLoginForm={setLoginForm} 
+                loginForm={loginForm} 
+                button={false} 
+                check={true}
+                name={"Username"}
+                keyword={"email"}
+            />
+            <InputForm 
+                setLoginForm={setLoginForm} 
+                loginForm={loginForm} 
+                button={true} 
+                check={pwdVisible}
+                setCheck={setPwdVisible}
+                name={"Password"}
+                keyword={"password"}
+            />
             <button className="form-container__form__submit button" type='submit'>Login</button>
         </form>
     </div>
