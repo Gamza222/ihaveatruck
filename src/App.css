@@ -11,6 +11,7 @@
     --color-primary: rgb(255, 88, 59);
     --color-red: rgb(255, 0, 0);
     --color-white: #fff;
+    --color-black: black;
 
     --padding-primary: 20px;
 
@@ -38,6 +39,22 @@ body {
     text-align: center;
     padding: 10px;
     height: var(--button-height);
+    border: 2px solid transparent;
     border-radius: var(--button-radius);
     font-size: var(--font-size-subtitle);
+}
+
+.button:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    background-color: transparent;
+}
+
+.button-text {
+    color: var(--color-black);
+    cursor: pointer;
+}
+
+.button-text:hover {
+    
 }

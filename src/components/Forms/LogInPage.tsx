@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React, { FC, FormEvent, useState, useEffect } from 'react'
-import { ILogin } from '../assets/types';
+import { IForm } from '../assets/types';
 import './Form.scss';
 import { AiOutlineEye } from 'react-icons/ai'
 import { AiOutlineEyeInvisible } from 'react-icons/ai'
 import InputForm from '../UI/inputForm/inputForm';
+import {Link} from "react-router-dom";
+import {AiOutlineCheck} from 'react-icons/ai'
 
 interface LoginPageProps {
 
@@ -13,7 +15,7 @@ interface LoginPageProps {
 const LogInPage: FC<LoginPageProps> = ({}) => {
 
     //data for login post request
-    const [loginForm, setLoginForm] = useState<ILogin>({
+    const [loginForm, setLoginForm] = useState<IForm>({
         email: "",
         password: ""
     });
@@ -22,10 +24,11 @@ const LogInPage: FC<LoginPageProps> = ({}) => {
     const [pwdVisible, setPwdVisible] = useState<boolean>(false);
     
     //state invalid pwd and email 
-
     const [invalid, setInvalid] = useState<boolean>(false);
 
-    console.log(loginForm)    
+    //state for remember me
+    const [remember, setRemember] = useState<boolean>(false);
+
 
     //configuration for login post request
     const config = {
@@ -44,7 +47,7 @@ const LogInPage: FC<LoginPageProps> = ({}) => {
         axios(config)
         .then((res) => {
             console.log(res);
-            alert("Login was successful");
+            alert(res.data.message);
             setInvalid(false);
         })
         .catch((err) => {
@@ -64,22 +67,33 @@ const LogInPage: FC<LoginPageProps> = ({}) => {
         }
         <form onSubmit={handleSubmit} className='form-container__form'>
             <InputForm 
-                setLoginForm={setLoginForm} 
-                loginForm={loginForm} 
+                setForm={setLoginForm} 
+                form={loginForm} 
                 button={false} 
                 check={true}
                 name={"Username"}
                 keyword={"email"}
             />
             <InputForm 
-                setLoginForm={setLoginForm} 
-                loginForm={loginForm} 
+                setForm={setLoginForm} 
+                form={loginForm} 
                 button={true} 
                 check={pwdVisible}
                 setCheck={setPwdVisible}
                 name={"Password"}
                 keyword={"password"}
             />
+            <div className='form-container__form__buttons'>
+                <button onClick={(e) => {e.preventDefault(); setRemember(!remember)}} className='form-container__form__buttons__checkbox button-text'>
+                    <div className='form-container__form__buttons__checkbox__box'>
+                        {
+                            remember ? <AiOutlineCheck /> : ""
+                        }
+                    </div>
+                    <p className='form-container__form__buttons__checkbox__text'>Remember me</p>
+                </button>
+                <Link className='form-container__form__buttons__button button-text' to="/reset-password">Forgot password?</Link>
+            </div>
             <button className="form-container__form__submit button" type='submit'>Login</button>
         </form>
     </div>

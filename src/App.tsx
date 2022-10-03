@@ -1,12 +1,18 @@
 import React from 'react';
 import './App.css';
-import LogInPage from './components/Forms/LogInPage';
+import Form from './components/Forms/Form';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <LogInPage />
-    </>
+    <Router>
+      <Form />
+    </Router>
   );
 }
 
