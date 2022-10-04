@@ -1,7 +1,7 @@
 {
   "name": "ihaveatruck",
   "version": "0.1.0",
-  "homepage": "/",
+  "homepage": "https://gamza222.github.io/ihaveatruck/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",

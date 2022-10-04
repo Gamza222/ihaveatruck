@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { FC, FormEvent, useState, useEffect } from 'react'
-import { IForm } from '../assets/types';
+import { IForm, ILoginUser } from '../assets/types';
 import './Form.scss';
 import { AiOutlineEye } from 'react-icons/ai'
 import { AiOutlineEyeInvisible } from 'react-icons/ai'
@@ -9,10 +9,11 @@ import {Link} from "react-router-dom";
 import {AiOutlineCheck} from 'react-icons/ai'
 
 interface LoginPageProps {
-
+    login: ILoginUser
+    setLogin: React.Dispatch<React.SetStateAction<ILoginUser>>
 }
 
-const LogInPage: FC<LoginPageProps> = ({}) => {
+const LogInPage: FC<LoginPageProps> = ({login, setLogin}) => {
 
     //data for login post request
     const [loginForm, setLoginForm] = useState<IForm>({
@@ -47,7 +48,9 @@ const LogInPage: FC<LoginPageProps> = ({}) => {
         axios(config)
         .then((res) => {
             console.log(res);
-            alert(res.data.message);
+            alert(res.data);
+            setLogin(res.data.data);
+            console.log(login);
             setInvalid(false);
         })
         .catch((err) => {
