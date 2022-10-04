@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/ihaveatruck/static/css/main.e55cc268.css",
-    "main.js": "/ihaveatruck/static/js/main.30018410.js",
+    "main.css": "/ihaveatruck/static/css/main.504ca096.css",
+    "main.js": "/ihaveatruck/static/js/main.fd5c6839.js",
     "index.html": "/ihaveatruck/index.html",
-    "main.e55cc268.css.map": "/ihaveatruck/static/css/main.e55cc268.css.map",
-    "main.30018410.js.map": "/ihaveatruck/static/js/main.30018410.js.map"
+    "main.504ca096.css.map": "/ihaveatruck/static/css/main.504ca096.css.map",
+    "main.fd5c6839.js.map": "/ihaveatruck/static/js/main.fd5c6839.js.map"
   },
   "entrypoints": [
-    "static/css/main.e55cc268.css",
-    "static/js/main.30018410.js"
+    "static/css/main.504ca096.css",
+    "static/js/main.fd5c6839.js"
   ]
 }
