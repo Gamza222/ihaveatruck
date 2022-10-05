@@ -3,6 +3,7 @@ import LogInPage from './LogInPage';
 import ResetPwd from './ResetPwd';
 import {Routes, Route} from "react-router-dom";
 import { ILoginUser } from 'components/assets/types';
+import RegistrationPage from './RegistrationPage';
 
 interface FormProps {
   login: ILoginUser
@@ -15,6 +16,7 @@ const Form : FC<FormProps> = ({login, setLogin}) => {
     <>
       <Routes>
         <Route path="/reset-password" element={<ResetPwd />} />
+        <Route path="/register" element={<RegistrationPage />} />
         <Route path="/" element={<LogInPage login={login} setLogin={setLogin} />} />
       </Routes>
     </>

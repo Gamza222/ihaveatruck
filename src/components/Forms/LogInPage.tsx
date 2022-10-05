@@ -47,10 +47,10 @@ const LogInPage: FC<LoginPageProps> = ({login, setLogin}) => {
         e.preventDefault();
         axios(config)
         .then((res) => {
-            console.log(res);
-            alert(res.data);
-            setLogin(res.data.data);
+            const {data} = res.data.data;
+            setLogin(data)
             console.log(login);
+            alert(res.data);
             setInvalid(false);
         })
         .catch((err) => {

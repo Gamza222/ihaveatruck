@@ -10,10 +10,12 @@ interface inputLogin {
     check?: boolean,
     setCheck?: React.Dispatch<React.SetStateAction<boolean>>,
     name: string,
-    keyword: string
+    keyword: string,
+    hidden?: boolean,
+    value?: number | string
 }
 
-const InputForm: FC<inputLogin> = ({setForm, form, button, check, setCheck, name, keyword}) => {
+const InputForm: FC<inputLogin> = ({setForm, form, button, check, setCheck, name, keyword, hidden, value}) => {
 
     //border state for inputs
     const [focus, setFocus] = useState(0);
@@ -40,7 +42,7 @@ const InputForm: FC<inputLogin> = ({setForm, form, button, check, setCheck, name
         <p className='form-container__form__item__title'>{name}</p>
         <div className={`form-container__form__item__input ${applyFocus()}`}>
             <input 
-                type={check ? "text" : "password"} 
+                type={hidden ? "hidden" : check ? "text" : "password"} 
                 onChange={(e) => {
                     setForm({...form, [keyword as keyof typeof form]: e.target.value});
                 }} 
@@ -48,6 +50,7 @@ const InputForm: FC<inputLogin> = ({setForm, form, button, check, setCheck, name
                 onBlur={(e) => {
                     e.target.value ? setFocus(0) : setFocus(2) 
                 }}
+                value={value ? value : ""}
                 required
             />
 

@@ -1,6 +1,13 @@
 export interface IForm {
     email: string,
-    password?: string
+    role_id?: number,
+    password?: string,
+    passwordRepeat?: string,
+    first_name?: string,
+    last_name?: string,
+    phone_number?: string,
+    address?: string,
+    business_type?: string,
 }
 
 export interface IResetPwdResponse {
