@@ -58,3 +58,12 @@ body {
 .button-text:hover {
     
 }
+
+.react-tel-input {
+    display: flex;
+}
+
+.react-tel-input .form-control {
+    width: 100%!important;
+    border-radius: 0!important;
+}

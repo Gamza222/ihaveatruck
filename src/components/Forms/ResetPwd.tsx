@@ -59,7 +59,6 @@ const ResetPwd: FC<ResetPwdProps> = ({}) => {
                 setForm={setResetPwdForm} 
                 form={resetPwdForm} 
                 button={false} 
-                check={true}
                 name={"Email"}
                 keyword={"email"}
             />

@@ -2,14 +2,13 @@ import axios from 'axios';
 import { IForm } from 'components/assets/types';
 import InputForm from 'components/UI/inputForm/inputForm';
 import React, { FC, FormEvent, useState, useEffect } from 'react'
-import PhoneInput from 'react-phone-input-2'
-import 'react-phone-input-2/lib/style.css'
+
 
 const RegistrationPage: FC = () => {
 
     //data for login post request
     const [registerForm, setRegisterForm] = useState<IForm>({
-        role_id: 0,
+        role_id: 1,
         email: "",
         first_name: "",
         last_name: "",
@@ -17,15 +16,18 @@ const RegistrationPage: FC = () => {
         password: "",
         passwordRepeat: "",
         address: "",
-        business_type: ""
+        business_type: 2
     });
-
-    //state of visibility of password
-    const [pwdVisible, setPwdVisible] = useState<boolean>(false);
     
     //state invalid credentials 
-    const [invalid, setInvalid] = useState<boolean>(false);
+    const [invalid, setInvalid] = useState<any>();
 
+    //state passwords match credentials 
+    const [pwdMatch, setPwdMatch] = useState<any>(true);
+
+    useEffect(() => {
+        registerForm.passwordRepeat == registerForm.password ? setPwdMatch(true) : setPwdMatch(false)
+    }, [registerForm.password, registerForm.passwordRepeat]);
 
     //configuration for register post request
     const config = {
@@ -43,15 +45,14 @@ const RegistrationPage: FC = () => {
         e.preventDefault();
         axios(config)
         .then((res) => {
-            const {data} = res.data.data;
-            setRegisterForm(data)
-            console.log(registerForm);
-            alert(res.data);
+            const {data} = res.data.message;
+            console.log(res.data.message);
+            alert(res.data.message);
             setInvalid(false);
         })
         .catch((err) => {
-            console.log(`error: ${err}`);
-            setInvalid(true);
+            console.log(`error: ${err.response.data.message}`);
+            setInvalid(err.response.data.message);
         })
     }
     console.log(registerForm)
@@ -63,14 +64,13 @@ const RegistrationPage: FC = () => {
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor magnam dicta nobis eius </p>
         </div>
         {
-            invalid ? <p className='form-container__error-msg'>email or password incorrect</p> : ''
+            invalid ? <p className='form-container__error-msg'>{invalid}</p> : ''
         }
         <form onSubmit={handleSubmit} className='form-container__form'>
             <InputForm 
                 setForm={setRegisterForm} 
                 form={registerForm} 
                 button={false} 
-                check={true}
                 name={"role_id"}
                 keyword={"role_id"}
                 hidden={true}
@@ -80,7 +80,6 @@ const RegistrationPage: FC = () => {
                 setForm={setRegisterForm} 
                 form={registerForm} 
                 button={false} 
-                check={true}
                 name={"business_type"}
                 keyword={"business_type"}
                 hidden={true}
@@ -90,7 +89,6 @@ const RegistrationPage: FC = () => {
                 setForm={setRegisterForm} 
                 form={registerForm} 
                 button={false} 
-                check={true}
                 name={"Email"}
                 keyword={"email"}
             />
@@ -98,7 +96,6 @@ const RegistrationPage: FC = () => {
                 setForm={setRegisterForm} 
                 form={registerForm} 
                 button={false} 
-                check={true}
                 name={"Name"}
                 keyword={"first_name"}
             />
@@ -106,41 +103,42 @@ const RegistrationPage: FC = () => {
                 setForm={setRegisterForm} 
                 form={registerForm} 
                 button={false} 
-                check={true}
                 name={"Last Name"}
                 keyword={"last_name"}
             />
-            <PhoneInput
-                country={'us'}
-                value={""}
-                onChange={phone => setRegisterForm({...registerForm, phone_number: phone})}
+            <InputForm 
+                setForm={setRegisterForm} 
+                form={registerForm} 
+                button={false} 
+                name={"Enter phone number"}
+                keyword={"phone_number"}
+                phone={true}
             />
             <InputForm 
                 setForm={setRegisterForm} 
                 form={registerForm} 
-                button={true} 
-                check={pwdVisible}
-                setCheck={setPwdVisible}
+                button={false} 
                 name={"Adress"}
                 keyword={"address"}
             />
+            {
+                pwdMatch ? "" : <p className='form-container__form__reject-text'>Passwords not match</p>
+            }
             <InputForm 
                 setForm={setRegisterForm} 
                 form={registerForm} 
-                button={true} 
-                check={pwdVisible}
-                setCheck={setPwdVisible}
+                button={true}
                 name={"Password"}
                 keyword={"password"}
+                visible={false}
             />
             <InputForm 
                 setForm={setRegisterForm} 
                 form={registerForm} 
-                button={true} 
-                check={pwdVisible}
-                setCheck={setPwdVisible}
+                button={true}   
                 name={"Repeat password"}
                 keyword={"passwordRepeat"}
+                visible={false}
             />
             <button className="form-container__form__submit button" type='submit'>Register</button>
         </form>

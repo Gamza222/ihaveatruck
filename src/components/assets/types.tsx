@@ -5,9 +5,9 @@ export interface IForm {
     passwordRepeat?: string,
     first_name?: string,
     last_name?: string,
-    phone_number?: string,
+    phone_number?: string | null,
     address?: string,
-    business_type?: string,
+    business_type?: string | number,
 }
 
 export interface IResetPwdResponse {

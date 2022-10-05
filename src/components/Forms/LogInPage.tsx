@@ -21,8 +21,6 @@ const LogInPage: FC<LoginPageProps> = ({login, setLogin}) => {
         password: ""
     });
 
-    //state of visibility of password
-    const [pwdVisible, setPwdVisible] = useState<boolean>(false);
     
     //state invalid pwd and email 
     const [invalid, setInvalid] = useState<boolean>(false);
@@ -73,7 +71,6 @@ const LogInPage: FC<LoginPageProps> = ({login, setLogin}) => {
                 setForm={setLoginForm} 
                 form={loginForm} 
                 button={false} 
-                check={true}
                 name={"Username"}
                 keyword={"email"}
             />
@@ -81,8 +78,6 @@ const LogInPage: FC<LoginPageProps> = ({login, setLogin}) => {
                 setForm={setLoginForm} 
                 form={loginForm} 
                 button={true} 
-                check={pwdVisible}
-                setCheck={setPwdVisible}
                 name={"Password"}
                 keyword={"password"}
             />
